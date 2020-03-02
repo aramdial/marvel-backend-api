@@ -4,6 +4,7 @@ declare(strict_types=1);    // ensure type-safety
 use Slim\App;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app){
     // root
@@ -12,16 +13,34 @@ return function (App $app){
         $res->getBody()->write("'Just because something works, doesn't mean it can't be improved.' – Shuri (Black Panther, 2018)");
         return $res;
     });
-    //series
-    $app->get('/v1/public/series', function(Request $req, Response $res){
-        // alternative is to use views for rendering data to client
-        $res->getBody()->write("Series!");
-        return $res;
+    $app->group('/v1/public/series', function(RouteCollectorProxy $group){
+        //series
+        $group->get('', function(Request $req, Response $res){
+            // alternative is to use views for rendering data to client
+            $res->getBody()->write("Series!");
+            return $res;
+        });
+        // series by param
+        $group->options('/{titleStartsWith}', function(Request $req, Response $res){
+            // alternative is to use views for rendering data to client
+            $res->getBody()->write("Return query");
+            return $res;
+        });
     });
-    //characters
-    $app->get('/v1/public/characters', function(Request $req, Response $res){
-        // alternative is to use views for rendering data to client
-        $res->getBody()->write("Characters!");
-        return $res;
+
+    $app->group('/v1/public/characters', function(RouteCollectorProxy $group){
+        //characters
+        $group->get('', function(Request $req, Response $res){
+            // alternative is to use views for rendering data to client
+            $res->getBody()->write("Characters!");
+            return $res;
+        });
+        // characters by param
+        $group->options('/{nameStartsWith}', function(Request $req, Response $res){
+            // alternative is to use views for rendering data to client
+            $res->getBody()->write("Return query");
+            return $res;
+        });
     });
+
 };

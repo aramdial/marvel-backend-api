@@ -1,9 +1,15 @@
 <?php
  // required package namespaces
 use Slim\Factory\AppFactory;
+use DI\Container;
 
-// pull in depedencies so they are available within the project
+// pull in dependencies so they are available within the project
 require '../vendor/autoload.php';
+
+// dependency container - help instantiate a singleton which is only created once throughout app 
+$container = new Container();
+AppFactory::setContainer($container);
+
 // create slim instance
 $app = AppFactory::create();
 // import middleware
