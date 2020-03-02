@@ -32,8 +32,12 @@ return function (App $app){
         //characters
         $group->get('', function(Request $req, Response $res){
             // alternative is to use views for rendering data to client
-            $res->getBody()->write("Characters!");
-            return $res;
+            $data = [
+                ['name' => 'Spiderman', 'email' => 'spidey@marvel.com' ],
+                ['name' => 'Iron Man', 'email' => 'ironman@marvel.com' ]
+            ];
+            $res->getBody()->write(json_encode($data));
+            return $res->withHeader('Content-Type', 'application/json');
         });
         // characters by param
         $group->options('/{nameStartsWith}', function(Request $req, Response $res){
