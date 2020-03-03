@@ -6,7 +6,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Marvel\\": "src/controllers"
+            "Marvel\\": "src"
         }
     }
 }
