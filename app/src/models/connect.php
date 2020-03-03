@@ -12,8 +12,7 @@ class Connect
             "db_host" => HOST,
             "db_user" => USER,
             "db_pass" => PASS,
-            "db_name" => DB_NAME,
-            "db_charset" => "UTF-8"
+            "db_name" => DB_NAME
         );
 
         if(empty(self::$instance)) {
