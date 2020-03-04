@@ -50,25 +50,26 @@ class Connect
     }
 
     /**
-     * Use to fetch characters or series
+     * Use to fetch characters or series using the search param
      */
 
-    public static function fetchCharacterList(){
+    public static function fetchCharacterList($param){
         if(!empty(self::$instance)) { 
             // prepare sql statements
-            $sql = "SELECT * FROM characters Order by id ASC LIMIT 20";
-            $characters = self::$instance->prepare($sql);
+            $characters = self::$instance->prepare('SELECT * FROM `characters` WHERE `name` LIKE :param');
+            $param = $param."%";
+            $characters->bindParam(':param', $param, PDO::PARAM_STR);
             $characters->execute();
             return $characters->fetchAll();
         }
         return NULL;
     }
 
-    public static function fetchSeriesList(){
+    public static function fetchSeriesList($param){
         if(!empty(self::$instance)) { 
-            // prepare sql statements
-            $sql = "SELECT * FROM series Order by id ASC LIMIT 20";
-            $series = self::$instance->prepare($sql);
+            $series = self::$instance->prepare('SELECT * FROM `series` WHERE `title` LIKE :param');
+            $param = $param."%";
+            $series->bindParam(':param', $param, PDO::PARAM_STR);
             $series->execute();
             return $series->fetchAll();
         }
@@ -222,7 +223,7 @@ class Connect
             $sql_creator->execute($args);
             $sql_creator_summ = self::$instance->prepare($sql_summary);
             // retrieve creators + sub lists
-            while($creator_row=$sql_creators->fetch()){
+            while($creator_row=$sql_creator->fetch()){
                 // get foreign key value - items list 
                 $sql_creator_summ->execute(array('listId' => $creator_row["creatorListId"]));
                 $summ = new stdClass();
@@ -246,9 +247,9 @@ class Connect
             $character_summary = array();
             $sql_character = self::$instance->prepare($sql_list);
             $sql_character->execute($args);
-            $sql_event_summ = self::$instance->prepare($sql_summary);
+            $sql_character_summ = self::$instance->prepare($sql_summary);
             // retrieve characters + sub lists
-            while($character_row=$sql_characters->fetch()){
+            while($character_row=$sql_character->fetch()){
                 // get foreign key value - items list 
                 $sql_character_summ->execute(array('listId' => $character_row["characterListId"]));
                 $summ = new stdClass();
