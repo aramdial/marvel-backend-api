@@ -33,7 +33,7 @@ $app->group('/v1/public/characters', function(RouteCollectorProxy $group){
     //characters
     $group->get('', CharactersController::class . ':listAll');
     // characters by param
-    $group->options('/{nameStartsWith}', CharactersController::class . ':listByParam');
+    $group->get('/{nameStartsWith}', CharactersController::class . ':listByParam');
 });
 
 
