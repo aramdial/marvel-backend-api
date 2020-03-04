@@ -74,8 +74,9 @@ class CharactersController {
 
     public function responseWithParam($param){
         $response = array();
-        $characters = $this->fetchCharacterList($param);
-        foreach($characters as $results){
+        $container = array();
+        $m_characters = $this->fetchCharacterList($param);
+        foreach($m_characters as $results){
             $characterId = Array('characterId' => $results['id']);
             $thumbnails = $this->fetchThumbnail($characterId);
             $events = $this->fetchEvents($characterId);
@@ -84,10 +85,16 @@ class CharactersController {
             $series = $this->fetchSeries($characterId);
             $stories = $this->fetchStories($characterId);
             // combine all data here
-            $container = $results + $thumbnails + $comics + $series + $stories + $events + $urls;
+            $container[] = $results + $thumbnails + $comics + $series + $stories + $events + $urls;
             // assign character obj
-            $response['results'][] = $container;
         }
+        $response["data"] = array(
+            'offset' => 0,
+            'limit' => 20,
+            'total' => count($m_characters),
+            'count' => count($m_characters),
+            'results' => $container
+        );
         return $response;
     }
 

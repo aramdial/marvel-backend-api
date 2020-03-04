@@ -93,8 +93,9 @@ class SeriesController {
 
     public function responseWithParam($param){
         $response = array();
-        $series = $this->fetchSeriesList($param);
-        foreach($series as $results){
+        $container = array();
+        $m_series = $this->fetchSeriesList($param);
+        foreach($m_series as $results){
             $seriesId = Array('seriesId' => $results['id']);
             $thumbnails = $this->fetchThumbnail($seriesId);
             $events = $this->fetchEvents($seriesId);
@@ -105,10 +106,16 @@ class SeriesController {
             $characters = $this->fetchCharacters($seriesId);
             $creators = $this->fetchCreators($seriesId);
             // combine all data here
-            $container = $results + $urls + $thumbnails + $creators + $characters + $stories + $comics + $events + $series;
-            // assign character obj
-            $response['results'][] = $container;
+            $container[] = $results + $urls + $thumbnails + $creators + $characters + $stories + $comics + $events + $series;
+            // assign series obj
         }
+        $response["data"] = array(
+            'offset' => 0,
+            'limit' => 20,
+            'total' => count($m_series),
+            'count' => count($m_series),
+            'results' => $container
+        );
         return $response;
     }
 
