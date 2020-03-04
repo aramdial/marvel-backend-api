@@ -292,12 +292,12 @@ define('BASE_URL','https://gateway.marvel.com:443');
 
 ### Example:
 
-[Request] 
-``` http://localhost:8080/v1/public/series ```
-[Response] 
-``` {"Error":"Missing parameter 'titleStartsWith'."} ```
+* Request 
+` http://localhost:8080/v1/public/series `
+* Response
+` {"Error":"Missing parameter 'titleStartsWith'."} `
 
-[Request]
-``` http://localhost:8080/v1/public/characters?nameStartsWith=3d ```
-[Response]
-``` {"Error":"Invalid entry for 'titleStartsWith' parameter."} ```
+* Request
+` http://localhost:8080/v1/public/characters?nameStartsWith=3d `
+* Response
+` {"Error":"Invalid entry for 'titleStartsWith' parameter."} `
