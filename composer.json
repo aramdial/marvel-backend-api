@@ -1,0 +1,16 @@
+{
+    "name": "Angelie Ramdial",
+    "description": "Basic API to search Marvel Series and Characters",
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "Marvel\\": "src"
+
+        }
+    }
+}
