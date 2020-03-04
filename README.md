@@ -11,7 +11,7 @@ This PHP app implements a basic API to search Marvel series and characters.
 - ``` ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY ‘PASSWORD`; ```
 
 ## Drivers: PHP PDO
-- PHP Data Pbject is an interface to work with mysql and other databases
+- PHP Data Object is an interface to work with mysql and other databases
 To check whether the PDO MySQL driver is enabled, you need to open the  php.ini file and uncomment the following line by removing the semicolon ( ;) at the front of the entry:
 - ``` extension=php_pdo_mysql.dll ```
 
