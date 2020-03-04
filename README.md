@@ -3,8 +3,16 @@
 ## Guidelines
 This PHP app implements a basic API to search Marvel series and characters.
 
+### Installations
+- `brew update `
+- `brew install php `
+- `composer` (PHP dependency manager (e.g. npm, yarn, etc.)
+	- https://getcomposer.org/download/ 
+	
+
 ## Framework: Slim 4
 - Slim is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs.
+	- http://www.slimframework.com/docs/v4/start/installation.html	
 
 ## Database: MySQL
 - If there are any issues authenticating to mySQL try the following command:
@@ -284,12 +292,12 @@ define('BASE_URL','https://gateway.marvel.com:443');
 
 ### Example:
 
-* Request: 
+[Request] 
 ``` http://localhost:8080/v1/public/series ```
-* Response: 
+[Response] 
 ``` {"Error":"Missing parameter 'titleStartsWith'."} ```
 
-* Request
+[Request]
 ``` http://localhost:8080/v1/public/characters?nameStartsWith=3d ```
-* Response:
+[Response]
 ``` {"Error":"Invalid entry for 'titleStartsWith' parameter."} ```
