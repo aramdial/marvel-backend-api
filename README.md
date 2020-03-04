@@ -294,10 +294,10 @@ define('BASE_URL','https://gateway.marvel.com:443');
 
 * Request 
 ` http://localhost:8080/v1/public/series `
-* Response
+Response
 ` {"Error":"Missing parameter 'titleStartsWith'."} `
 
 * Request
 ` http://localhost:8080/v1/public/characters?nameStartsWith=3d `
-* Response
+Response
 ` {"Error":"Invalid entry for 'titleStartsWith' parameter."} `
