@@ -8,7 +8,6 @@ This PHP app implements a basic API to search Marvel series and characters.
 
 ## Database: MySQL
 - If there are any issues authenticating to mySQL try the following command:
-- If issues authenticating to MSQL
 - ``` ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY ‘PASSWORD`; ```
 
 ## Drivers: PHP PDO
