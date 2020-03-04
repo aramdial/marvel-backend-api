@@ -26,12 +26,12 @@ To check whether the PDO MySQL driver is enabled, you need to open the  php.ini
 ## Tools: Git, CLI, Visual Code, Postman, MySQL Workbench 
 
 ## Folder Structure
-* ` App `  
+` App `  
 - Directory contains api for server requests
 - Uses MVC to store Models, Controller, and Routes, (No view created for this project)
-* ` sql_dump.sql ` 
+` sql_dump.sql ` 
 - SQL file containing my database schema used to create my local database
-*  ` initDB `
+` initDB `
 - Directory contains scripts I developed to dynamically populate data from Marvel's api to my database which gave me a good amount of data to work with :)
 
 ## Config file required
