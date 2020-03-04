@@ -17,10 +17,6 @@ To check whether the PDO MySQL driver is enabled, you need to open the  php.ini
 
 ## Tools: Git, CLI, Visual Code, Postman, MySQL Workbench 
 
-## Run the app
-
-``` php -S localhost:8080 ```
-
 ## Folder Structure
 * ` App `  
 - Directory contains api for server requests
@@ -40,6 +36,10 @@ define('PUBLIC_KEY','MARVEL'S PUBLIC_KEY');
 define('PRIVATE_KEY','MARVEL's PRIVATE_KEY');
 define('BASE_URL','https://gateway.marvel.com:443');
 ```
+
+## Run the app
+
+``` php -S localhost:8080 ```
 
 ## RESTful URLs
 
